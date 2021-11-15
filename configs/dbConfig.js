@@ -2,10 +2,15 @@ const mongoose = require('mongoose');
 
 function dbConfig() {
 	mongoose
-		.connect('mongodb://localhost:27017/BoomMatrixDB', {
-			useUnifiedTopology: true,
-			useNewUrlParser: true,
-		})
+		.connect(
+			process.env.NODE_ENV && process.env.NODE_ENV.trim() === 'production'
+				? process.env.MONGO_URI
+				: 'mongodb://localhost:27017/EthanMediaDB',
+			{
+				useUnifiedTopology: true,
+				useNewUrlParser: true,
+			}
+		)
 		.then((client) => {
 			if (client) {
 				console.log('DB connected sucessfully'.blue.bold);
