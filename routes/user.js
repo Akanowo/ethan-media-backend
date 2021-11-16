@@ -9,7 +9,7 @@ const {
 } = require('../controllers/user');
 
 router.route('/:id').put(authentication, updateUser);
-router.route('/').get(getUsers).post(authentication, createNewUser);
+router.route('/').post(authentication, createNewUser);
 router.route('/login').post(login);
 
 module.exports = router;
