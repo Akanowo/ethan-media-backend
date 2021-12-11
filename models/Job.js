@@ -9,7 +9,7 @@ const jobSchema = new Schema({
 		required: [1, 'media type is required'],
 	},
 	url: {
-		type: [String],
+		type: String,
 		match: [
 			/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
 			'invalid media url format',

@@ -32,3 +32,24 @@ module.exports.uploadNewJob = asyncHandler(async (req, res, next) => {
 		data: job,
 	});
 });
+
+/**
+ * @desc Delete job
+ * @route DELETE /api/v1/jobs/:id
+ * @access Private
+ */
+module.exports.deleteJob = asyncHandler(async (req, res, next) => {
+	// find job and delete
+	const { id } = req.params;
+	const job = await Job.findByIdAndDelete(id);
+
+	if (!job) {
+		const error = new ErrorResponse(`Invalid job id`, 400);
+		return next(error);
+	}
+
+	return res.status(201).json({
+		status: true,
+		data: {},
+	});
+});
