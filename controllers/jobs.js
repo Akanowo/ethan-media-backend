@@ -25,6 +25,7 @@ module.exports.getJobs = asyncHandler(async (req, res, next) => {
  */
 module.exports.uploadNewJob = asyncHandler(async (req, res, next) => {
 	// save data to db
+
 	const job = await Job.create(req.body);
 
 	return res.status(201).json({
